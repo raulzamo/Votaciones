@@ -1,0 +1,257 @@
+PSOE:27074
+PP:26588
+VOX:20478
+UP:10219
+CS:8711
+
+
+Permisos (Switch case)
+Al iniciar sesión crear objeto votante y guardarlo en la sesión.
+    1. Preguntar por el rol. Administrador o Votante.
+    2. Preguntar por el estado del escrutinio. Cerrado, abierto, finalizado.
+    3. 
+
+
+Para llamar al controlador "../ControladorAltaVotante"
+
+Nombres de objetos y clases primera mayuscula.
+Atributos en minuscula.
+
+
+Menú:
+Listado general.
+Gestionar escrutinio.
+Votante.
+Votar.
+
+Resultados. -> mostrar votos 
+            ->mostrar escaños 
+Salir.
+
+Cuando hay un listado crear una clase en el modelo para crear un arraylist con ese objeto.
+
+switch (rol){
+    case "Administrador":
+        switch(EstadoEscrutinio){
+            case "Cerrado":
+               switch(opcion){
+                case "Baja Votante":
+                response.sendRedirect("Vista/VistaBorradoVotante.jsp");
+                break;
+                .
+                .   
+                .
+                
+                default: //NO SE SI ESTA BIEN
+                response.sendRedirect("Vista/VistERROR.jsp");
+
+en en case votar preguntar si ha votado o no.
+
+if (Votar.equals="N"){
+}
+
+ley dhont
+https://es.wikipedia.org/wiki/Sistema_D%27Hondt
+se lleva escaño el que esta en la posicion 0 y se divide entre 2,3,4.. (4 escaños)
+idexof(OBJETO) si esta te dice si esta ya en el arraylist http://www.w3api.com/wiki/Java:String.indexOf()
+y comparar con el equals.
+
+TABLA PARTIDO
+ID
+DENOMINACION
+SIGLAS
+LOGO
+VOTOS
+
+TABLA VOTANTE
+ID
+NIF
+NOMBRE
+APELLIDOS
+DOMICILIO
+FECHA_NAC
+PASSWORD VARBINARY
+VOTADO (S,N) ENUM
+ROL (Votante, administrador)ENUM
+
+
+TABLA CANDIDATOS
+ID
+NOMBRE_APELLIDOS 
+ORDEN
+ID_PARTIDO(FK)
+
+TABLA PARAMETROS
+ID
+CIRCUSCRIPCION VARCHAR
+CANDIDATOSELEGIR INT
+TIPOCONSULTA VARCHAR
+FECHACONSULTA DATE
+ESTADOESCRUTINIO (CERRADO, ABIERTO, FINALIZADO)ENUM
+FRASE PARA CONTRASEÑA CON HASH
+
+
+
+Para coger los datos del formulario:
+
+String nombre = request.getParameter("nombre");
+
+Pasar fecha de string a localdate:
+
+LocalDate fechaNac=LocalDate.parse(request.getParameter("fechanac"));
+
+Crear objeto:
+
+Votante OVotante = new Votante(nif,nombre,apellidos..);
+
+Crear arraylist:
+
+ArrayList<Votante> ListadoCenso=new ArrayList();
+
+Mandarlo a la sesion:
+
+session.setAtributte("ListadoCenso", ListadoCenso ); 
+
+En la vista para llamar al arraylist de la sesion:
+
+ArrayList <Votante> ListadoCenso=(ArrayList) session.getAttribute("ListadoCenso");
+
+(ListadoCenso.get(i).getFechaNacString());
+
+DAO****************************************************************************
+
+public ArrayList<Votante> getCenso (Connection Conexion) throws ApplicationErrorException{
+ArrayList<Votante> ListadoCenso=new ArrayList();
+Statement s=Conexion.createStatement();
+Resulset rs=s.Execute
+
+ListadoCenso.add(new Votante(rs.getString("domicilio"),
+}
+
+public void borrarVotante(){
+int filasBorradas=0;
+try{
+
+filasBorradas=PrepStm.executeUpdate();
+if(filasBorradas!=1){
+throw new ApplicationErrorException("Votante no borrado",0,"Operaciones.BorrarVotante()");
+
+}
+
+}}
+
+public void modificarVotante(Votante OVotante, Connection Conexion){
+try{
+String OrdenSQL="UPDATE VOTANTE SET NOMBRE=?, APELLIDOS=?, DOMICILIO=?, FECHA_NAC=?, PASSWORD=AES_ENCRYPT..
+PreparedStatement PrepStm= Conexion.prepareStatement(OrdenSQL);
+PrepStm.setString(1,OVotante.getNombre());
+.
+.
+.
+int filas=PrepStm.executeUpdate(); //NO SE SI ES ASI
+if(filas!=1){
+throw new ApplicationErrorException("Votante no modificado",0,"Operaciones.ModificarVotante()");
+
+}
+
+public void insertarVotante(Votante OVotante, Connection Conexion) throws ApplicationErrorException{
+try{
+String OrdenSQL="INSERT INTO VOTANTE VALUES ( null, ?,?,?,?,?, AES_ENCRYPT('?','raul'),N, VOTANTE)"
+PreparedStatement PrepStm= Conexion.prepareStatement(OrdenSQL);
+PreparedStatement PrepStm= Conexion.prepareStatement(OrdenSQL);
+PrepStm.setString(1,OVotante.getNif());
+PrepStm.setString(2,OVotante.getNombre());
+
+PrepStm.setDate(5,java.sql.Date.valueOf(OVotante.getFechaNac()));
+int filas=PrepStm.executeUpdate();
+if(filas!=1){
+throw new ApplicationErrorException("Votante no modificado",0,"Operaciones.insertarVotante()");
+
+}
+}catch(SQLEXCEPTION SQLE){
+STRING MENSAJE=SQLE.getMessage();
+int codigoerror=SQLE.getErrorCode();
+trhow new AplicationException(MENSAJE, CODIGOERROR, "TEXTO ERROR"):
+}
+}
+
+for(Electo OElecto:ArrayElectos){}
+
+
+if(Votado.equals("N"){}
+else 
+
+for (Partido ObjPartido:ArrayPartidos){ //para mostrar el partido para votar.
+
+<input type="radio" name"" value=ObjPartido.getSiglas()>
+
+ControladorRegistrarVoto{
+try{
+//Transaccion
+Conexion.setAutoCommit(false);
+
+Operaciones.votar(OVotante, OPartidoVotado, conexion);
+
+Conexion.commit();
+Conexion.setAutoCommit(true);
+
+
+public void votar(Votante OVotante, Partido OPartidoVotado, Conexion Conexion) throws ApplicationErrorException{
+try
+}
+
+ley de d'hont
+
+1.Array partidos con objetos de partidos (todos los datos, id..)
+2.Objeto Escaños(id_partido, siglas, logo, nº escaños.
+3. Ordenar array <ArrayList>.sort() CompareTo
+4. pasamos al array escaños el que se queda en la posicion 0
+5. dividimos los votos del qe esta en la posicion 0 entre 2
+7. volvemos a ordenar y cogemos el de la posicion 0
+8.Comprobar con indexOf si esta ese partido en el array con equals y el hash
+Cuando ya este todo
+Crear un arraylist de electos.
+crear bucle desde 1 hasta el numero de escaños.
+
+******
+public ArrayList<Electo> getElectos(int numescaños, Connection conexion) trhows...{
+
+ArrayList <Partido> ArrayPartidos=new ArrayList();
+String SQL="Select * FROM PARTIDOS";
+try{
+Statement=
+r
+ArrayPartidos.sort(collentions.reverseOrder());
+
+ArrayList<Escaño> ArrayEscaños =new ArrayList();
+
+for(int=0, i<numeroEscaños,i++){
+
+
+int Indice=ArrayEscaños.indexOf(ObjEscaño);
+
+if(Indice!=-1){//Existe
+
+ObjEscaño=ArrayEscaños.get(Indice);
+ObjEscaño.setNumeroEscaños(ObjEscaño.getEscaños()+1);//Suma 1
+ArrayEscaños.set(Indice, ObjEscaño);
+
+}
+else{
+ArrayEscaños.add(ObjEscaño);
+}
+//dividimos entre 2
+ArrayPartidos.get(0).setVotos(ArrayPartidos.get(0).getVotos()/2);
+
+ArrayPartidos.sort(Collections.reverseOrder());
+
+ArrayList<Electo> ArrayElectos=new ArrayList();
+
+for(Escaño ObjEscaño:ArrayEscaños){ //ESTO SE PUEDE EVITAR CON EL SELECT DE ABAJO**************
+int numeroEscaños=ObjEscaño.getNumeroEscaños();*****************
+for(int i=1; i<=numeroEscaños;i++){****************
+int idPartido=ObjEscaño.getIdPArtido();***********************
+
+
+*****
+SELECT * FROM Candidatos WHERE id_partido=IDPARTIDO AND orden BETWEEN 1 AND numeroEscaños ORDER BY orden;

@@ -1,0 +1,169 @@
+nav a{
+    color: #3a3b3b;
+}
+nav a:hover{
+    color: #df0309;
+}
+.dropdown-item:active{
+    background-color:#d29b02;
+}
+
+#Partidos{
+    display: grid;
+    grid-template-columns: repeat(5,20%);
+}
+#Partidos img{
+    width: 80%;
+}
+#Partidos img:hover {
+    transform: scale(1.1);
+    border: 0px;
+}
+.partidos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+/* HIDE RADIO */
+[type=radio] { 
+    position: absolute;
+    opacity: 0;
+    width: 17%;
+    height: 11%;
+    cursor: pointer;
+
+}
+[type=radio]:hover{
+    transform: scale(1.1);
+    border: 0px;
+}
+/* IMAGE STYLES */
+[type=radio] + img {
+    cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+    border: 2px solid black;
+    border-radius: 4%;
+}
+
+.Electos{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 30% 30%;
+}
+.Electos div{
+    display: grid;
+    justify-content: center;
+    margin: 3%;
+    text-align: center;
+    border: 1px solid;
+}
+.alert{
+    margin: 3%;
+}
+.BotonesInicio{
+    display:flex;
+}
+.BotonesInicio button{
+    width: 45%;
+    margin: 3%;
+}
+.error{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+.error table{
+    width: 30%;
+    height: 68px;
+    border: 1px solid;
+}
+.error button{
+    width: 45%;
+    margin: 3%;
+}
+
+
+.errorRegistro{
+    text-align: center;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 50%;
+    align-items: center;
+    margin: 10%;
+}
+.errorRegistro table{
+    width: 56%;
+    height: 68px;
+    border: 1px solid;
+    align-self: center;
+    align-self: center;
+    justify-self: center;
+}
+.errorRegistro button{
+    align-self: center;
+    justify-self: center;
+    margin: 4%;
+}
+.formularioVotante{
+    display: grid;
+    grid-template-columns: 49% 49%;
+    grid-template-rows: 49% 49%;
+    width: 60%;
+}
+.formularioVotante .form-group{
+    margin: 5%;
+}
+h3{
+    text-align: center;
+
+}
+.BotonesAlta{
+    display: grid;
+    grid-column: 1/3;
+    grid-template-columns: 50% 50%;
+    justify-items: center;
+}
+.BotonesAlta button{
+    width: 60%;
+
+}
+
+.BotonesModificar{
+    display: grid;
+    grid-column: 1/3;
+    justify-items: center;
+}
+.BotonesModificar button{
+    width: 60%;
+
+}
+
+.BotonVotar{
+    grid-column: 3;
+    text-align: center;
+    margin-top: 4%;
+}
+.BotonVotar button{
+    width: 50%;
+}
+.logoInicio{
+    margin-top: 10%;
+}
+.Bienvenida{
+    text-align: center;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color:white;
+    background-color:#3a3b3b;
+    padding-top: 1%;
+    padding-bottom: 2%;
+    text-align: center;
+}
