@@ -36,7 +36,7 @@
             }
         </script>
 
-        <title>Elecciones 10N - Iniciar sesión</title>
+        <title>Elecciones Generales 10N - Iniciar sesión.</title>
     </head>
 
     <body>
