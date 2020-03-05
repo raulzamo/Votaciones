@@ -52,7 +52,7 @@
                         <img class="img-fluid rounded mx-auto d-block" src="../img/logo.png" alt="logo">
 
                     </div>
-                       <div class="col-lg-4">
+                       <div class="col-lg-4"><!--Si falla en el inicio de sesion sale un mensaje de error-->
                           <%if (error != null) {%>
                  
                   
